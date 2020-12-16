@@ -74,6 +74,17 @@ class Test(unittest.TestCase):
         #foundLinkText.click()
         self.newTable(url=foundLinkText.get_attribute('href'))
 
+    def test_xpath(self):
+        self.newWeb('python')
+        self.browser.maximize_window()
+
+        sleep(1)
+
+        #self.browser.find_element_by_xpath('//input[@id=\'id-search-field\']').send_keys('unittest')
+        self.browser.find_element_by_xpath('//input[@name=\'q\']').send_keys('unittest')
+        sleep(1)
+        self.browser.find_element_by_name('submit').click()
+
     def test_newTab(self):
         print('test_newTab is being tested...')
         self.test_search()
