@@ -24,6 +24,8 @@ browser.get(stockLocation)
 browser.find_element_by_id(config['Web']['web_asset_liabiliry_tab']).click()
 browser.find_element_by_id(config['Web']['web_year_report']).click()
 
+pageTitle = browser.find_element_by_class_name('pageTitle').text
+
 print()
 
 yearStr = browser.find_element_by_xpath(config['Web']['web_year']).text
@@ -102,6 +104,7 @@ tableData = {
         'EPS': EPSList,
         'ROE': ROEList    
     }
+print('Stock:', pageTitle)
 print('Currency: NTD, Unit: Millinon')
 print(tabulate(tableData, headers='keys', tablefmt='fancy_grid'))
 print('P/E Ratio: {0}, Stock cheap price: NTD {1}'.format(PERatio, format(stockPrice, '.3f')))
